@@ -57,6 +57,7 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,18 +69,20 @@ $conn->close();
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { 'sans': ['Inter', 'sans-serif'] },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif']
+                    },
                     colors: {
                         'brand': {
                             'green': '#16a34a', // Primary Green (e.g., #16a34a from Tailwind's green-600)
                             'light': '#dcfce7', // Light green background
                         },
                         'neutral': {
-                            'bg': '#f8fafc',    // Background
-                            'card': '#ffffff',  // Card background
-                            'border': '#e5e7eb',// Borders
-                            'text-main': '#1f2937',// Main text
-                            'text-muted': '#6b7280',// Muted text
+                            'bg': '#f8fafc', // Background
+                            'card': '#ffffff', // Card background
+                            'border': '#e5e7eb', // Borders
+                            'text-main': '#1f2937', // Main text
+                            'text-muted': '#6b7280', // Muted text
                         }
                     }
                 }
@@ -92,6 +95,7 @@ $conn->close();
         }
     </style>
 </head>
+
 <body class="bg-neutral-bg flex min-h-screen text-neutral-text-main">
 
     <aside class="w-64 bg-neutral-card border-r border-neutral-border flex-col h-screen fixed hidden lg:flex">
@@ -105,8 +109,8 @@ $conn->close();
             </div>
         </div>
         <nav class="flex-1 px-4 py-6 space-y-2">
-            <a href="manager_dashboard.php" class="bg-brand-green text-white flex items-center px-4 py-2.5 text-sm font-semibold rounded-lg shadow-md" >
-                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3" ></i> Dashboard
+            <a href="manager_dashboard.php" class="bg-brand-green text-white flex items-center px-4 py-2.5 text-sm font-semibold rounded-lg shadow-md">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i> Dashboard
             </a>
             <a href="artifact_management.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
                 <i data-lucide="archive" class="w-5 h-5 mr-3"></i> Artifacts
@@ -114,8 +118,12 @@ $conn->close();
             <a href="digital_collections.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
                 <i data-lucide="gem" class="w-5 h-5 mr-3"></i> Digital Collections
             </a>
-             <a href="add_media.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <a href="add_media.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
                 <i data-lucide="clapperboard" class="w-5 h-5 mr-3"></i> Add Media
+            </a>
+           
+            <a href="add_timeline_event.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+                <i data-lucide="milestone" class="w-5 h-5 mr-3"></i> Digital Timeline
             </a>
              <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
                 <i data-lucide="users" class="w-5 h-5 mr-3"></i> Visitor Analytics
@@ -123,9 +131,12 @@ $conn->close();
             <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
                 <i data-lucide="file-text" class="w-5 h-5 mr-3"></i> Content Reports
             </a>
-             <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
                 <i data-lucide="settings" class="w-5 h-5 mr-3"></i> System Settings
             </a>
+
+
+            
         </nav>
         <div class="mt-auto px-4 py-6 border-t border-neutral-border">
             <a href="logout.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
@@ -222,24 +233,24 @@ $conn->close();
             <div class="divide-y divide-neutral-border">
                 <?php if (!empty($recentArtifacts)): ?>
                     <?php foreach ($recentArtifacts as $artifact): ?>
-                    <div class="grid grid-cols-3 gap-4 items-center p-4 hover:bg-gray-50">
-                        <div class="flex items-center gap-4">
-                            <div class="bg-brand-light p-3 rounded-full"><i data-lucide="box" class="text-brand-green w-5 h-5"></i></div>
-                            <div>
-                                <p class="font-semibold"><?php echo htmlspecialchars($artifact['title']); ?></p>
-                                <p class="text-xs text-neutral-text-muted">Donated by <?php echo htmlspecialchars($artifact['contributor_name'] ?? 'N/A'); ?></p>
+                        <div class="grid grid-cols-3 gap-4 items-center p-4 hover:bg-gray-50">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-brand-light p-3 rounded-full"><i data-lucide="box" class="text-brand-green w-5 h-5"></i></div>
+                                <div>
+                                    <p class="font-semibold"><?php echo htmlspecialchars($artifact['title']); ?></p>
+                                    <p class="text-xs text-neutral-text-muted">Donated by <?php echo htmlspecialchars($artifact['contributor_name'] ?? 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded-full"><?php echo htmlspecialchars($artifact['object_type']); ?></span>
+                            </div>
+                            <div class="text-right">
+                                <button class="text-neutral-text-muted hover:text-neutral-text-main"><i data-lucide="more-vertical" class="w-5 h-5"></i></button>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded-full"><?php echo htmlspecialchars($artifact['object_type']); ?></span>
-                        </div>
-                        <div class="text-right">
-                             <button class="text-neutral-text-muted hover:text-neutral-text-main"><i data-lucide="more-vertical" class="w-5 h-5"></i></button>
-                        </div>
-                    </div>
                     <?php endforeach; ?>
                 <?php else: ?>
-                     <p class="text-center text-neutral-text-muted py-8">No recently added artifacts.</p>
+                    <p class="text-center text-neutral-text-muted py-8">No recently added artifacts.</p>
                 <?php endif; ?>
             </div>
         </section>
@@ -251,13 +262,21 @@ $conn->close();
         function updateTime() {
             const timeEl = document.getElementById('time');
             const dateEl = document.getElementById('date');
-            
+
             if (timeEl && dateEl) {
                 const now = new Date();
-                const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+                const timeOptions = {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                };
                 timeEl.textContent = now.toLocaleTimeString('en-US', timeOptions).replace(' ', ''); // Remove space for format like 12:09AM
-                
-                const dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
+
+                const dateOptions = {
+                    weekday: 'long',
+                    month: 'long',
+                    day: 'numeric'
+                };
                 dateEl.textContent = now.toLocaleDateString('en-US', dateOptions);
             }
         }
@@ -265,4 +284,5 @@ $conn->close();
         setInterval(updateTime, 1000);
     </script>
 </body>
+
 </html>

@@ -92,6 +92,9 @@ $conn->close();
              <a href="add_media.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
                 <i data-lucide="clapperboard" class="w-5 h-5 mr-3"></i> Add Media
             </a>
+             <a href="add_timeline_event.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+                <i data-lucide="milestone" class="w-5 h-5 mr-3"></i> Digital Timeline
+            </a>
              <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
                 <i data-lucide="users" class="w-5 h-5 mr-3"></i> Visitor Analytics
             </a>

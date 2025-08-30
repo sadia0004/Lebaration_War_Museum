@@ -239,7 +239,7 @@ $conn->close();
             <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40"></div>
             <div class="relative z-10 max-w-4xl mx-auto" data-aos="fade-up">
                 <h1 class="text-4xl md:text-6xl font-bold font-serif mb-6 animate-pulse">
-                    Digital Gateway to <span class="text-yellow-400">Liberation</span>
+                    Digital Gateway to <span class="text-yellow-200">Liberation War Museum</span>
                 </h1>
                 <p class="text-xl md:text-2xl mb-8 opacity-95 font-light leading-relaxed">
                     Preserving the memories of 1971 • Honoring the brave souls • Inspiring future generations
