@@ -107,188 +107,218 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Artifact - Museum</title>
+    <title>Add Artifact - Liberation War Museum</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { 'sans': ['Inter', 'sans-serif'] },
+                    fontFamily: { 
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'] 
+                    },
                     colors: {
-                        'brand': { 'green': '#16a34a', 'light': '#dcfce7' },
-                        'neutral': { 'bg': '#f8fafc', 'card': '#ffffff', 'border': '#e5e7eb', 'text-main': '#1f2937', 'text-muted': '#6b7280' }
+                        'liberation': {
+                            'red': '#dc143c',
+                            'green': '#006a4e', 
+                            'gold': '#ffd700',
+                            'dark': '#1a1a1a'
+                        }
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-neutral-bg flex min-h-screen text-neutral-text-main">
-
-    <aside class="w-64 bg-neutral-card border-r border-neutral-border flex-col h-screen fixed hidden lg:flex">
-         <div class="h-20 flex items-center justify-start px-6 border-b border-neutral-border">
+<body class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 font-sans">
+    
+    <aside class="w-72 bg-white/95 backdrop-blur-lg border-r border-slate-200/50 flex-col h-screen fixed hidden lg:flex shadow-xl">
+        <div class="h-20 flex items-center justify-center px-6 border-b border-slate-200/50 bg-gradient-to-r from-red-700 to-green-800">
             <div class="flex items-center space-x-3">
-                <img src="images/logo.png" alt="Museum Logo" class="h-10 w-10 object-cover rounded-md">
-                <div class="text-left">
-                    <h1 class="text-base font-bold">Liberation War</h1>
-                    <p class="text-xs text-neutral-text-muted">Digital Museum</p>
+                <div class="relative">
+                    <img src="images/logo.png" alt="Liberation War Museum Logo" class="h-12 w-12 object-cover rounded-full border-2 border-white shadow-lg">
+                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-yellow-500 rounded-full border-2 border-white"></div>
+                </div>
+                <div class="text-left text-white">
+                    <h1 class="text-lg font-bold font-serif">Manager Portal</h1>
+                    <p class="text-xs opacity-90 font-medium">Liberation War 1971</p>
                 </div>
             </div>
         </div>
+
         <nav class="flex-1 px-4 py-6 space-y-2">
-            <a href="manager_dashboard.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
-                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i> Dashboard Overview
+            <div class="text-xs uppercase tracking-wide text-slate-500 font-semibold mb-4 px-2">Management</div>
+            
+            <a href="manager_dashboard.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i> Dashboard
             </a>
-            <a href="artifact_management.php" class="bg-brand-green text-white flex items-center px-4 py-2.5 text-sm font-semibold rounded-lg shadow-md">
-                <i data-lucide="archive" class="w-5 h-5 mr-3"></i> Artifact Management
+            <a href="artifact_management.php" class="bg-gradient-to-r from-red-700 to-green-800 text-white flex items-center px-4 py-3 text-sm font-semibold rounded-xl shadow-lg">
+                <i data-lucide="archive" class="w-5 h-5 mr-3"></i> Artifacts
+            </a>
+            <a href="digital_collections.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
+                <i data-lucide="gem" class="w-5 h-5 mr-3"></i> Digital Collections
+            </a>
+            <a href="add_media.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
+                <i data-lucide="clapperboard" class="w-5 h-5 mr-3"></i> Media Library
+            </a>
+            <a href="add_timeline_event.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
+                <i data-lucide="milestone" class="w-5 h-5 mr-3"></i> Timeline Events
             </a>
         </nav>
-        <div class="mt-auto px-4 py-6 border-t border-neutral-border">
-            <a href="logout.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+
+        <div class="mt-auto px-4 py-4 border-t border-slate-200/50">
+            <a href="logout.php" class="text-red-600 hover:bg-red-50 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300">
                 <i data-lucide="log-out" class="w-5 h-5 mr-3"></i> Sign Out
             </a>
         </div>
     </aside>
 
-    <main class="flex-1 p-8 lg:ml-64">
-        <header class="flex items-center justify-between mb-8">
-            <h1 class="text-2xl font-bold text-neutral-text-main">Add New Artifact</h1>
+    <main class="flex-1 lg:ml-72 p-6 lg:p-10">
+        <header class="mb-8" data-aos="fade-down">
+            <h1 class="text-4xl font-bold text-slate-900 font-serif">Add New Artifact</h1>
+            <p class="text-slate-600 mt-2">Fill in the details below to add a new item to the museum's collection.</p>
         </header>
 
         <?php if ($successMsg): ?>
-            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+            <div class="bg-green-100 border-l-4 border-liberation-green text-green-800 p-4 mb-6 rounded-r-lg shadow" role="alert" data-aos="fade-left">
+                <p class="font-semibold">Success</p>
                 <p><?php echo $successMsg; ?></p>
             </div>
         <?php endif; ?>
         <?php if ($errorMsg): ?>
-             <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
+            <div class="bg-red-100 border-l-4 border-liberation-red text-red-800 p-4 mb-6 rounded-r-lg shadow" role="alert" data-aos="fade-left">
+                <p class="font-semibold">Error</p>
                 <p><?php echo $errorMsg; ?></p>
             </div>
         <?php endif; ?>
 
         <form method="POST" action="add_artifact.php" enctype="multipart/form-data" class="space-y-8">
-            <div class="bg-neutral-card p-6 rounded-xl border border-neutral-border">
-                <h3 class="text-lg font-semibold border-b border-neutral-border pb-3 mb-6">Core Identification</h3>
+            <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-lg border border-white/20" data-aos="fade-up">
+                <h3 class="text-2xl font-bold font-serif text-slate-800 border-b border-slate-200 pb-4 mb-6">Core Identification</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block mb-1.5 text-sm font-medium">Title <span class="text-red-500">*</span></label>
-                        <input type="text" name="title" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green" placeholder="e.g., Freedom Fighter's Diary" required>
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Title <span class="text-liberation-red">*</span></label>
+                        <input type="text" name="title" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., Freedom Fighter's Diary" required>
                     </div>
                      <div>
-                        <label class="block mb-1.5 text-sm font-medium">Collection Number <span class="text-red-500">*</span></label>
-                        <input type="text" name="collection_number" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green" placeholder="e.g., CN-1971-001" required>
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Collection Number <span class="text-liberation-red">*</span></label>
+                        <input type="text" name="collection_number" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., CN-1971-001" required>
                     </div>
                     <div>
-                        <label class="block mb-1.5 text-sm font-medium">Accession Number</label>
-                        <input type="text" name="accession_number" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green" placeholder="e.g., AN-2024-001">
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Accession Number</label>
+                        <input type="text" name="accession_number" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., AN-2025-001">
                     </div>
                     <div>
-                        <label class="block mb-1.5 text-sm font-medium">Object Type</label>
-                        <select name="object_type" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Object Type</label>
+                        <select name="object_type" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5">
                             <option>Documents</option><option>Personal Items</option><option>Weaponry</option><option>Media</option><option>Clothing</option><option>Other</option>
                         </select>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-neutral-card p-6 rounded-xl border border-neutral-border">
-                <h3 class="text-lg font-semibold border-b border-neutral-border pb-3 mb-6">Historical Context</h3>
+            <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-lg border border-white/20" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-2xl font-bold font-serif text-slate-800 border-b border-slate-200 pb-4 mb-6">Historical Context</h3>
                 <div class="space-y-6">
                      <div>
-                        <label class="block mb-1.5 text-sm font-medium">Description</label>
-                        <textarea name="description" rows="4" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green" placeholder="A detailed description..."></textarea>
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Description</label>
+                        <textarea name="description" rows="4" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="A detailed description of the artifact, its appearance, and any notable features."></textarea>
                     </div>
                      <div>
-                        <label class="block mb-1.5 text-sm font-medium">Significance</label>
-                        <textarea name="significance_comment" rows="3" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green" placeholder="Explain the historical significance..."></textarea>
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Significance</label>
+                        <textarea name="significance_comment" rows="3" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="Explain the historical significance, who it belonged to, or the events it is associated with."></textarea>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block mb-1.5 text-sm font-medium">Period</label>
-                            <input type="text" name="period" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green" placeholder="e.g., During War, Pre-War">
+                            <label class="block mb-2 text-sm font-medium text-slate-700">Period</label>
+                            <input type="text" name="period" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., Liberation War Era (1971)">
                         </div>
                         <div>
-                            <label class="block mb-1.5 text-sm font-medium">Contributor (Donor)</label>
-                            <input type="text" name="contributor_name" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                            <label class="block mb-2 text-sm font-medium text-slate-700">Contributor (Donor)</label>
+                            <input type="text" name="contributor_name" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="Name of the person or family who donated the item">
                         </div>
                         <div>
-                            <label class="block mb-1.5 text-sm font-medium">Collection Date</label>
-                            <input type="date" name="collection_date" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                            <label class="block mb-2 text-sm font-medium text-slate-700">Collection Date</label>
+                            <input type="date" name="collection_date" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5">
                         </div>
                         <div>
-                            <label class="block mb-1.5 text-sm font-medium">Found Place</label>
-                            <input type="text" name="found_place" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                            <label class="block mb-2 text-sm font-medium text-slate-700">Place Found or Used</label>
+                            <input type="text" name="found_place" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., Sector 9, Satkhira">
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-neutral-card p-6 rounded-xl border border-neutral-border">
-                <h3 class="text-lg font-semibold border-b border-neutral-border pb-3 mb-6">Curatorial & Physical Details</h3>
+            <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-lg border border-white/20" data-aos="fade-up" data-aos-delay="200">
+                 <h3 class="text-2xl font-bold font-serif text-slate-800 border-b border-slate-200 pb-4 mb-6">Curatorial & Physical Details</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block mb-1.5 text-sm font-medium">Materials</label>
-                        <input type="text" name="materials" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green" placeholder="e.g., Steel, Wood, Paper, Ink">
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Materials</label>
+                        <input type="text" name="materials" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., Steel, Wood, Paper, Ink">
                     </div>
                      <div>
-                        <label class="block mb-1.5 text-sm font-medium">Measurements</label>
-                        <input type="text" name="measurements" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Measurements (e.g., HxWxD cm)</label>
+                        <input type="text" name="measurements" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., 20cm x 15cm x 2cm">
                     </div>
                     <div>
-                        <label class="block mb-1.5 text-sm font-medium">Gallery Number</label>
-                        <input type="text" name="gallery_number" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Gallery Number</label>
+                        <input type="text" name="gallery_number" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., G-04">
                     </div>
                     <div>
-                        <label class="block mb-1.5 text-sm font-medium">Condition</label>
-                        <select name="condition" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Condition</label>
+                        <select name="condition" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5">
                             <option>Excellent</option><option>Good</option><option>Fair</option><option>Poor</option>
                         </select>
                     </div>
                      <div>
-                        <label class="block mb-1.5 text-sm font-medium">Status</label>
-                        <select name="status" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Status</label>
+                        <select name="status" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5">
                             <option>In Storage</option><option>On Display</option><option>Under Restoration</option><option>On Loan</option>
                         </select>
                     </div>
                      <div>
-                        <label class="block mb-1.5 text-sm font-medium">Preservation Notes</label>
-                        <input type="text" name="preservation_notes" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Preservation Notes</label>
+                        <input type="text" name="preservation_notes" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., Needs climate control">
                     </div>
                      <div class="md:col-span-2">
-                        <label class="block mb-1.5 text-sm font-medium">Correction Notes</label>
-                        <input type="text" name="correction_notes" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                        <label class="block mb-2 text-sm font-medium text-slate-700">Correction Notes</label>
+                        <input type="text" name="correction_notes" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="Any corrections to the provided information">
                     </div>
                 </div>
             </div>
 
-            <div class="bg-neutral-card p-6 rounded-xl border border-neutral-border">
-                <h3 class="text-lg font-semibold border-b border-neutral-border pb-3 mb-6">Digital Options</h3>
+            <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-lg border border-white/20" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-2xl font-bold font-serif text-slate-800 border-b border-slate-200 pb-4 mb-6">Digital Options</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                     <div>
-                         <label class="block mb-1.5 text-sm font-medium">Primary Image</label>
-                         <input type="file" name="artifactImage" accept="image/*" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
-                         <p class="mt-1 text-xs text-gray-500">PNG, JPG, or GIF (MAX. 5MB).</p>
+                         <label class="block mb-2 text-sm font-medium text-slate-700">Primary Image</label>
+                         <input type="file" name="artifactImage" accept="image/*" class="block w-full text-sm text-slate-700 border border-slate-300 rounded-lg cursor-pointer bg-slate-50 focus:outline-none file:bg-slate-200 file:text-slate-700 file:px-4 file:py-2 file:mr-4 file:border-0 hover:file:bg-slate-300">
+                         <p class="mt-1 text-xs text-slate-500">PNG, JPG, or GIF (MAX. 5MB).</p>
                     </div>
                      <div class="flex items-center pt-6">
-                        <input id="is_featured" name="is_featured" type="checkbox" value="1" class="w-4 h-4 text-brand-green bg-gray-100 border-gray-300 rounded focus:ring-brand-green">
-                        <label for="is_featured" class="ml-2 text-sm font-medium">Feature this artifact on visitor dashboard?</label>
+                        <input id="is_featured" name="is_featured" type="checkbox" value="1" class="w-5 h-5 text-liberation-green bg-slate-100 border-slate-300 rounded focus:ring-liberation-green/50 focus:ring-2">
+                        <label for="is_featured" class="ml-3 text-sm font-medium text-slate-800">Feature this artifact on visitor dashboard?</label>
                     </div>
                 </div>
             </div>
             
-            <div class="flex justify-end gap-4 pt-4">
-                <a href="artifact_management.php" class="px-6 py-2.5 text-sm font-semibold text-neutral-text-muted hover:text-neutral-text-main">Cancel</a>
-                <button type="submit" class="bg-brand-green text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-opacity-90 shadow-sm flex items-center gap-2">
+            <div class="flex justify-end gap-4 pt-4" data-aos="fade-up" data-aos-delay="400">
+                <a href="artifact_management.php" class="px-8 py-3 text-sm font-semibold text-slate-600 hover:text-slate-900 bg-slate-200/60 hover:bg-slate-300/60 rounded-full transition-colors">Cancel</a>
+                <button type="submit" class="bg-gradient-to-r from-red-600 to-green-600 text-white px-8 py-3 rounded-full text-sm font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2">
                     <i data-lucide="save" class="w-4 h-4"></i>
                     Save Artifact
                 </button>
             </div>
         </form>
     </main>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         lucide.createIcons();
+        AOS.init({ duration: 600, once: true, offset: 50 });
     </script>
 </body>
 </html>

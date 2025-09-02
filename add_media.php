@@ -29,7 +29,6 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
     $successMsg = "Media file uploaded successfully! You can add another one.";
 }
 
-
 // --- Handle Form Submission ---
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -65,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $thumbDir = "uploads/thumbnails/";
             if (!is_dir($thumbDir)) { mkdir($thumbDir, 0777, true); }
 
-            $thumbName = time() . "_thumb_" . basename($_FILES["thumbnailFile"]["name"]);
+            $thumbName = time() . "thumb" . basename($_FILES["thumbnailFile"]["name"]);
             $thumbPath = $thumbDir . $thumbName;
             
             if (move_uploaded_file($_FILES["thumbnailFile"]["tmp_name"], $thumbPath)) {
@@ -105,110 +104,122 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Media - Museum</title>
+    <title>Add Media - Liberation War Museum</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { 'sans': ['Inter', 'sans-serif'] },
+                    fontFamily: { 
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'] 
+                    },
                     colors: {
-                        'brand': { 'green': '#16a34a', 'light': '#dcfce7' },
-                        'neutral': { 'bg': '#f8fafc', 'card': '#ffffff', 'border': '#e5e7eb', 'text-main': '#1f2937', 'text-muted': '#6b7280' }
+                        'liberation': {
+                            'red': '#dc143c',
+                            'green': '#006a4e', 
+                            'gold': '#ffd700',
+                            'dark': '#1a1a1a'
+                        }
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-neutral-bg flex min-h-screen text-neutral-text-main">
+<body class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 font-sans">
     
-    <aside class="w-64 bg-neutral-card border-r border-neutral-border flex-col h-screen fixed hidden lg:flex">
-         <div class="h-20 flex items-center justify-start px-6 border-b border-neutral-border">
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-white/95 backdrop-blur-lg border-r border-slate-200/50 flex-col h-screen fixed hidden lg:flex shadow-xl">
+        <div class="h-20 flex items-center justify-center px-6 border-b border-slate-200/50 bg-gradient-to-r from-red-700 to-green-800">
             <div class="flex items-center space-x-3">
-                <img src="images/logo.png" alt="Museum Logo" class="h-10 w-10 object-cover rounded-md">
-                <div class="text-left">
-                    <h1 class="text-base font-bold">Liberation War</h1>
-                    <p class="text-xs text-neutral-text-muted">Digital Museum</p>
+                <div class="relative">
+                    <img src="images/logo.png" alt="Liberation War Museum Logo" class="h-12 w-12 object-cover rounded-full border-2 border-white shadow-lg">
+                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-yellow-500 rounded-full border-2 border-white"></div>
+                </div>
+                <div class="text-left text-white">
+                    <h1 class="text-lg font-bold font-serif">Digital Museum</h1>
+                    <p class="text-xs opacity-90 font-medium">Liberation War 1971</p>
                 </div>
             </div>
         </div>
+
         <nav class="flex-1 px-4 py-6 space-y-2">
-           <a href="manager_dashboard.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <a href="manager_dashboard.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
                 <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i> Dashboard
             </a>
-            <a href="artifact_management.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <a href="artifact_management.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
                 <i data-lucide="archive" class="w-5 h-5 mr-3"></i> Artifacts
             </a>
-            <a href="digital_collections.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <a href="digital_collections.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
                 <i data-lucide="gem" class="w-5 h-5 mr-3"></i> Digital Collections
             </a>
-             <a href="add_media.php" class="bg-brand-green text-white flex items-center px-4 py-2.5 text-sm font-semibold rounded-lg shadow-md">
+            <a href="add_media.php" class="bg-gradient-to-r from-red-700 to-green-800 text-white flex items-center px-4 py-3 text-sm font-semibold rounded-xl shadow-lg">
                 <i data-lucide="clapperboard" class="w-5 h-5 mr-3"></i> Add Media
             </a>
-             
-             <a href="add_timeline_event.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <a href="add_timeline_event.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
                 <i data-lucide="milestone" class="w-5 h-5 mr-3"></i> Digital Timeline
             </a>
-
-             <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <div class="text-xs uppercase tracking-wide text-slate-500 font-semibold mb-4 px-2 pt-6">Analytics & System</div>
+             <a href="#" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
                 <i data-lucide="users" class="w-5 h-5 mr-3"></i> Visitor Analytics
             </a>
-            <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <a href="#" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
                 <i data-lucide="file-text" class="w-5 h-5 mr-3"></i> Content Reports
             </a>
-             <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+             <a href="#" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
                 <i data-lucide="settings" class="w-5 h-5 mr-3"></i> System Settings
             </a>
         </nav>
-        <div class="mt-auto px-4 py-6 border-t border-neutral-border">
-            <a href="logout.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+        <div class="mt-auto px-4 py-4 border-t border-slate-200/50">
+            <a href="logout.php" class="text-red-600 hover:bg-red-50 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300">
                 <i data-lucide="log-out" class="w-5 h-5 mr-3"></i> Sign Out
             </a>
         </div>
     </aside>
 
     <main class="flex-1 lg:ml-64">
-        <header class="bg-neutral-card/80 backdrop-blur-lg border-b border-neutral-border flex items-center justify-between px-8 py-4 sticky top-0 z-10">
-            <a href="digital_collections.php" class="flex items-center gap-2 text-sm font-semibold text-neutral-text-muted hover:text-neutral-text-main">
+        <!-- Enhanced Header -->
+        <header class="bg-white/90 backdrop-blur-lg border-b border-slate-200/50 flex items-center justify-between px-8 py-4 sticky top-0 z-10 shadow-sm">
+            <a href="digital_collections.php" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-red-600 transition-colors duration-300">
                 <i data-lucide="arrow-left" class="w-4 h-4"></i>
                 Back to Collections
             </a>
-            <h1 class="text-xl font-bold text-neutral-text-main">Add New Media File</h1>
+            <h1 class="text-2xl font-bold text-slate-900 font-serif">Add New Media File</h1>
         </header>
         
         <div class="p-8">
             <?php if ($successMsg): ?>
-                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert"><p><?php echo $successMsg; ?></p></div>
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-lg" role="alert"><p><?php echo $successMsg; ?></p></div>
             <?php endif; ?>
             <?php if ($errorMsg): ?>
-                 <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert"><p><?php echo $errorMsg; ?></p></div>
+                 <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-lg" role="alert"><p><?php echo $errorMsg; ?></p></div>
             <?php endif; ?>
 
             <form id="media-form" method="POST" action="add_media.php" enctype="multipart/form-data" class="space-y-8 max-w-2xl pb-24">
-                <div class="bg-neutral-card p-6 rounded-xl border border-neutral-border">
-                    <h3 class="text-lg font-semibold border-b border-neutral-border pb-3 mb-6">Media Details</h3>
+                <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl border border-slate-200/50 shadow-lg">
+                    <h3 class="text-xl font-bold text-slate-900 font-serif border-b border-slate-200/50 pb-3 mb-6">Media Details</h3>
                     <div class="space-y-6">
                         <div>
-                            <label for="title" class="block mb-1.5 text-sm font-medium">Title <span class="text-red-500">*</span></label>
-                            <input type="text" id="title" name="title" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green" required>
+                            <label for="title" class="block mb-2 text-sm font-medium text-slate-700">Title <span class="text-red-500">*</span></label>
+                            <input type="text" id="title" name="title" class="bg-white border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-3" required>
                         </div>
                          <div>
-                            <label for="description" class="block mb-1.5 text-sm font-medium">Description</label>
-                            <textarea id="description" name="description" rows="4" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green"></textarea>
+                            <label for="description" class="block mb-2 text-sm font-medium text-slate-700">Description</label>
+                            <textarea id="description" name="description" rows="4" class="bg-white border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-3"></textarea>
                         </div>
                         <div>
-                            <label for="media_type" class="block mb-1.5 text-sm font-medium">Media Type <span class="text-red-500">*</span></label>
-                            <select id="media_type" name="media_type" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green" onchange="toggleThumbnailField()">
+                            <label for="media_type" class="block mb-2 text-sm font-medium text-slate-700">Media Type <span class="text-red-500">*</span></label>
+                            <select id="media_type" name="media_type" class="bg-white border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-3" onchange="toggleThumbnailField()">
                                 <option value="video">Video</option>
                                 <option value="audio">Audio</option>
                             </select>
                         </div>
                         <div>
-                            <label for="category" class="block mb-1.5 text-sm font-medium">Content Category</label>
-                            <select id="category" name="category" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5 focus:ring-brand-green focus:border-brand-green">
+                            <label for="category" class="block mb-2 text-sm font-medium text-slate-700">Content Category</label>
+                            <select id="category" name="category" class="bg-white border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-3">
                                 <option value="" disabled selected>Select a category</option>
                                 <option value="Documentary">Documentary</option>
                                 <option value="War Footage">War Footage</option>
@@ -221,28 +232,28 @@ $conn->close();
                     </div>
                 </div>
                 
-                <div class="bg-neutral-card p-6 rounded-xl border border-neutral-border">
-                    <h3 class="text-lg font-semibold border-b border-neutral-border pb-3 mb-6">File Uploads</h3>
+                <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl border border-slate-200/50 shadow-lg">
+                    <h3 class="text-xl font-bold text-slate-900 font-serif border-b border-slate-200/50 pb-3 mb-6">File Uploads</h3>
                      <div class="space-y-6">
                         <div>
-                             <label class="block mb-1.5 text-sm font-medium">Media File (Video or Audio) <span class="text-red-500">*</span></label>
-                             <input type="file" name="mediaFile" accept="video/*,audio/*" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
-                             <p class="mt-1 text-xs text-gray-500">MP4, MOV, MP3, WAV etc.</p>
+                             <label class="block mb-2 text-sm font-medium text-slate-700">Media File (Video or Audio) <span class="text-red-500">*</span></label>
+                             <input type="file" name="mediaFile" accept="video/,audio/" class="block w-full text-sm text-slate-900 border border-slate-300 rounded-lg cursor-pointer bg-white focus:outline-none focus:ring-2 focus:ring-red-500/20" required>
+                             <p class="mt-2 text-xs text-slate-500">MP4, MOV, MP3, WAV etc.</p>
                         </div>
                         <div id="thumbnail-field">
-                             <label class="block mb-1.5 text-sm font-medium">Thumbnail Image (for Video)</label>
-                             <input type="file" name="thumbnailFile" accept="image/*" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
-                             <p class="mt-1 text-xs text-gray-500">PNG or JPG. Recommended aspect ratio 16:9.</p>
+                             <label class="block mb-2 text-sm font-medium text-slate-700">Thumbnail Image (for Video)</label>
+                             <input type="file" name="thumbnailFile" accept="image/*" class="block w-full text-sm text-slate-900 border border-slate-300 rounded-lg cursor-pointer bg-white focus:outline-none focus:ring-2 focus:ring-red-500/20">
+                             <p class="mt-2 text-xs text-slate-500">PNG or JPG. Recommended aspect ratio 16:9.</p>
                         </div>
                      </div>
                 </div>
             </form>
         </div>
 
-        <footer class="fixed bottom-0 left-0 lg:left-64 right-0 bg-white/95 backdrop-blur-sm p-4 border-t border-neutral-border shadow-lg z-10">
+        <footer class="fixed bottom-0 left-0 lg:left-64 right-0 bg-white/95 backdrop-blur-sm p-4 border-t border-slate-200/50 shadow-lg z-10">
             <div class="flex justify-end gap-4 max-w-4xl mx-auto">
-                <a href="digital_collections.php" class="px-6 py-2.5 text-sm font-semibold text-neutral-text-muted hover:text-neutral-text-main">Cancel</a>
-                <button type="submit" form="media-form" class="bg-brand-green text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-opacity-90 shadow-sm flex items-center gap-2">
+                <a href="digital_collections.php" class="px-6 py-3 text-sm font-semibold text-slate-600 hover:text-red-600 transition-colors duration-300">Cancel</a>
+                <button type="submit" form="media-form" class="bg-gradient-to-r from-red-700 to-green-800 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 shadow-md">
                     <i data-lucide="upload-cloud" class="w-4 h-4"></i>
                     Upload Media
                 </button>
@@ -257,6 +268,12 @@ $conn->close();
             const thumbnailField = document.getElementById('thumbnail-field');
             thumbnailField.style.display = (mediaType === 'video') ? 'block' : 'none';
         }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial state for thumbnail field
+            toggleThumbnailField();
+        });
     </script>
 </body>
 </html>

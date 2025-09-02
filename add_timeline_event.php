@@ -92,153 +92,179 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Timeline Event - Museum</title>
+    <title>Add Timeline Event - Liberation War Museum</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script>
         tailwind.config = {
             theme: {
-                 extend: {
-                    fontFamily: { 'sans': ['Inter', 'sans-serif'] },
+                extend: {
+                    fontFamily: { 
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'] 
+                    },
                     colors: {
-                        'brand': { 'green': '#16a34a', 'light': '#dcfce7' },
-                        'neutral': { 'bg': '#f8fafc', 'card': '#ffffff', 'border': '#e5e7eb', 'text-main': '#1f2937', 'text-muted': '#6b7280' }
+                        'liberation': {
+                            'red': '#dc143c',
+                            'green': '#006a4e', 
+                            'gold': '#ffd700',
+                            'dark': '#1a1a1a'
+                        }
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-neutral-bg flex min-h-screen text-neutral-text-main">
+<body class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 font-sans">
     
-    <aside class="w-64 bg-neutral-card border-r border-neutral-border flex-col h-screen fixed hidden lg:flex">
-         <div class="h-20 flex items-center justify-start px-6 border-b border-neutral-border">
+    <aside class="w-72 bg-white/95 backdrop-blur-lg border-r border-slate-200/50 flex-col h-screen fixed hidden lg:flex shadow-xl">
+        <div class="h-20 flex items-center justify-center px-6 border-b border-slate-200/50 bg-gradient-to-r from-red-700 to-green-800">
             <div class="flex items-center space-x-3">
-                <img src="images/logo.png" alt="Museum Logo" class="h-10 w-10 object-cover rounded-md">
-                <div class="text-left">
-                    <h1 class="text-base font-bold">Liberation War</h1>
-                    <p class="text-xs text-neutral-text-muted">Digital Museum</p>
+                <div class="relative">
+                    <img src="images/logo.png" alt="Liberation War Museum Logo" class="h-12 w-12 object-cover rounded-full border-2 border-white shadow-lg">
+                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-yellow-500 rounded-full border-2 border-white"></div>
+                </div>
+                <div class="text-left text-white">
+                    <h1 class="text-lg font-bold font-serif">Manager Portal</h1>
+                    <p class="text-xs opacity-90 font-medium">Liberation War 1971</p>
                 </div>
             </div>
         </div>
+
         <nav class="flex-1 px-4 py-6 space-y-2">
-           <a href="manager_dashboard.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <div class="text-xs uppercase tracking-wide text-slate-500 font-semibold mb-4 px-2">Management</div>
+            
+            <a href="manager_dashboard.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
                 <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i> Dashboard
             </a>
-            <a href="artifact_management.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <a href="artifact_management.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
                 <i data-lucide="archive" class="w-5 h-5 mr-3"></i> Artifacts
             </a>
-            <a href="digital_collections.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+            <a href="digital_collections.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
                 <i data-lucide="gem" class="w-5 h-5 mr-3"></i> Digital Collections
             </a>
-            <a href="add_media.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
-                <i data-lucide="clapperboard" class="w-5 h-5 mr-3"></i> Add Media
+            <a href="add_media.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
+                <i data-lucide="clapperboard" class="w-5 h-5 mr-3"></i> Media Library
             </a>
-            <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
-                <i data-lucide="users" class="w-5 h-5 mr-3"></i> Visitor Analytics
-            </a>
-           <a href="add_timeline_event.php" class="bg-brand-green text-white flex items-center px-4 py-2.5 text-sm font-semibold rounded-lg shadow-md" >
-                <i data-lucide="milestone" class="w-5 h-5 mr-3"></i> Digital Timeline
-            </a>
-            <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
-                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i> Content Reports
-            </a>
-            <a href="#" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
-                <i data-lucide="settings" class="w-5 h-5 mr-3"></i> System Settings
+            <a href="add_timeline_event.php" class="bg-gradient-to-r from-red-700 to-green-800 text-white flex items-center px-4 py-3 text-sm font-semibold rounded-xl shadow-lg">
+                <i data-lucide="milestone" class="w-5 h-5 mr-3"></i> Timeline Events
             </a>
 
+            <div class="text-xs uppercase tracking-wide text-slate-500 font-semibold mb-4 px-2 pt-6">Analytics & System</div>
+             <a href="visitor_analytics.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
+                <i data-lucide="users" class="w-5 h-5 mr-3"></i> Visitor Analytics
+            </a>
+            <a href="content_report.php" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
+                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i> Content Reports
+            </a>
+             <a href="#" class="text-slate-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-green-50 hover:text-red-600 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 hover:translate-x-1">
+                <i data-lucide="settings" class="w-5 h-5 mr-3"></i> System Settings
+            </a>
         </nav>
-        <div class="mt-auto px-4 py-6 border-t border-neutral-border">
-            <a href="logout.php" class="text-neutral-text-muted hover:bg-gray-100 hover:text-neutral-text-main flex items-center px-4 py-2.5 text-sm font-medium rounded-lg">
+
+
+        <div class="mt-auto px-4 py-4 border-t border-slate-200/50">
+            <a href="logout.php" class="text-red-600 hover:bg-red-50 flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300">
                 <i data-lucide="log-out" class="w-5 h-5 mr-3"></i> Sign Out
             </a>
         </div>
     </aside>
 
-    <main class="flex-1 lg:ml-64">
-        <header class="bg-neutral-card/80 backdrop-blur-lg border-b border-neutral-border flex items-center justify-between px-8 py-4 sticky top-0 z-10">
-             <a href="manager_dashboard.php" class="flex items-center gap-2 text-sm font-semibold text-neutral-text-muted hover:text-neutral-text-main">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                Back to Dashboard
-            </a>
-            <h1 class="text-xl font-bold text-neutral-text-main">Add New Timeline Event</h1>
-        </header>
-        
-        <div class="p-8">
+    <main class="flex-1 lg:ml-72">
+        <div class="p-6 lg:p-10">
+            <header class="mb-8" data-aos="fade-down">
+                <h1 class="text-4xl font-bold text-slate-900 font-serif">Add Timeline Event</h1>
+                <p class="text-slate-600 mt-2">Create a new entry for the historical timeline of the Liberation War.</p>
+            </header>
+
             <?php if ($successMsg): ?>
-                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert"><p><?php echo $successMsg; ?></p></div>
+                <div class="bg-green-100 border-l-4 border-liberation-green text-green-800 p-4 mb-6 rounded-r-lg shadow" role="alert" data-aos="fade-left">
+                    <p class="font-semibold">Success</p>
+                    <p><?php echo $successMsg; ?></p>
+                </div>
             <?php endif; ?>
             <?php if ($errorMsg): ?>
-                 <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert"><p><?php echo $errorMsg; ?></p></div>
+                <div class="bg-red-100 border-l-4 border-liberation-red text-red-800 p-4 mb-6 rounded-r-lg shadow" role="alert" data-aos="fade-left">
+                    <p class="font-semibold">Error</p>
+                    <p><?php echo $errorMsg; ?></p>
+                </div>
             <?php endif; ?>
 
-            <form id="timeline-form" method="POST" action="add_timeline_event.php" enctype="multipart/form-data" class="space-y-8 max-w-3xl pb-24">
-                <div class="bg-neutral-card p-6 rounded-xl border border-neutral-border">
-                    <h3 class="text-lg font-semibold border-b border-neutral-border pb-3 mb-6">Event Details</h3>
+            <form id="timeline-form" method="POST" action="add_timeline_event.php" enctype="multipart/form-data" class="space-y-8 max-w-4xl pb-24">
+                
+                <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-lg border border-white/20" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold font-serif text-slate-800 border-b border-slate-200 pb-4 mb-6">Event Details</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="event_title" class="block mb-1.5 text-sm font-medium">Event Title <span class="text-red-500">*</span></label>
-                            <input type="text" id="event_title" name="event_title" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5" placeholder="e.g., Historic Speech by Bangabandhu" required>
+                            <label for="event_title" class="block mb-2 text-sm font-medium text-slate-700">Event Title <span class="text-liberation-red">*</span></label>
+                            <input type="text" id="event_title" name="event_title" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., Historic 7th March Speech" required>
                         </div>
                         <div>
-                            <label for="event_date" class="block mb-1.5 text-sm font-medium">Event Date <span class="text-red-500">*</span></label>
-                            <input type="date" id="event_date" name="event_date" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5" required>
+                            <label for="event_date" class="block mb-2 text-sm font-medium text-slate-700">Event Date <span class="text-liberation-red">*</span></label>
+                            <input type="date" id="event_date" name="event_date" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" required>
                         </div>
                         <div>
-                            <label for="location" class="block mb-1.5 text-sm font-medium">Location</label>
-                            <input type="text" id="location" name="location" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5" placeholder="e.g., Dhaka">
+                            <label for="location" class="block mb-2 text-sm font-medium text-slate-700">Location</label>
+                            <input type="text" id="location" name="location" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="e.g., Ramna Race Course, Dhaka">
                         </div>
                         <div>
-                            <label for="category" class="block mb-1.5 text-sm font-medium">Category</label>
-                            <select id="category" name="category" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5">
-                                <option>Political</option><option>Military</option><option>Diplomatic</option><option>Social</option><option>Economic</option><option>Other</option>
+                            <label for="category" class="block mb-2 text-sm font-medium text-slate-700">Category</label>
+                            <select id="category" name="category" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5">
+                                <option>Political</option><option>Military</option><option>Diplomatic</option><option>Social</option><option>Cultural</option><option>Genocide</option><option>Other</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-neutral-card p-6 rounded-xl border border-neutral-border">
-                    <h3 class="text-lg font-semibold border-b border-neutral-border pb-3 mb-6">Narrative</h3>
+                <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-lg border border-white/20" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold font-serif text-slate-800 border-b border-slate-200 pb-4 mb-6">Narrative</h3>
                     <div class="space-y-6">
                         <div>
-                            <label for="event_description" class="block mb-1.5 text-sm font-medium">Event Description</label>
-                            <textarea id="event_description" name="event_description" rows="5" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5" placeholder="A detailed description of what happened..."></textarea>
+                            <label for="event_description" class="block mb-2 text-sm font-medium text-slate-700">Event Description</label>
+                            <textarea id="event_description" name="event_description" rows="5" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="A detailed, neutral description of what occurred during the event."></textarea>
                         </div>
                         <div>
-                            <label for="event_significance" class="block mb-1.5 text-sm font-medium">Significance</label>
-                            <textarea id="event_significance" name="event_significance" rows="3" class="bg-gray-50 border border-neutral-border text-sm rounded-lg w-full p-2.5" placeholder="Explain the historical importance..."></textarea>
+                            <label for="event_significance" class="block mb-2 text-sm font-medium text-slate-700">Significance</label>
+                            <textarea id="event_significance" name="event_significance" rows="3" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500/30 focus:border-red-500 block w-full p-2.5" placeholder="Explain the historical importance of this event and its impact on the Liberation War."></textarea>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-neutral-card p-6 rounded-xl border border-neutral-border">
-                    <h3 class="text-lg font-semibold border-b border-neutral-border pb-3 mb-6">Display Options</h3>
+                <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-lg border border-white/20" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold font-serif text-slate-800 border-b border-slate-200 pb-4 mb-6">Display Options</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                          <div>
-                             <label class="block mb-1.5 text-sm font-medium">Event Image</label>
-                             <input type="file" name="eventImage" accept="image/*" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
-                             <p class="mt-1 text-xs text-gray-500">PNG or JPG. An image that represents the event.</p>
+                             <label class="block mb-2 text-sm font-medium text-slate-700">Event Image</label>
+                             <input type="file" name="eventImage" accept="image/*" class="block w-full text-sm text-slate-700 border border-slate-300 rounded-lg cursor-pointer bg-slate-50 focus:outline-none file:bg-slate-200 file:text-slate-700 file:px-4 file:py-2 file:mr-4 file:border-0 hover:file:bg-slate-300">
+                             <p class="mt-1 text-xs text-slate-500">PNG or JPG. An image that represents the event.</p>
                         </div>
                         <div class="flex items-center pt-6">
-                            <input id="is_featured" name="is_featured" type="checkbox" value="1" class="w-4 h-4 text-brand-green bg-gray-100 border-gray-300 rounded">
-                            <label for="is_featured" class="ml-2 text-sm font-medium">Feature this event on the timeline?</label>
+                            <input id="is_featured" name="is_featured" type="checkbox" value="1" class="w-5 h-5 text-liberation-green bg-slate-100 border-slate-300 rounded focus:ring-liberation-green/50 focus:ring-2">
+                            <label for="is_featured" class="ml-3 text-sm font-medium text-slate-800">Feature this event on the timeline?</label>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
 
-        <footer class="fixed bottom-0 left-0 lg:left-64 right-0 bg-white/95 backdrop-blur-sm p-4 border-t border-neutral-border shadow-lg z-10">
+        <footer class="fixed bottom-0 left-0 lg:left-72 right-0 bg-white/95 backdrop-blur-sm p-4 border-t border-slate-200/50 shadow-lg z-10" data-aos="fade-up" data-aos-delay="300">
             <div class="flex justify-end gap-4 max-w-4xl mx-auto">
-                <a href="manager_dashboard.php" class="px-6 py-2.5 text-sm font-semibold text-neutral-text-muted hover:text-neutral-text-main">Cancel</a>
-                <button type="submit" form="timeline-form" class="bg-brand-green text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-opacity-90 shadow-sm flex items-center gap-2">
+                <a href="manager_dashboard.php" class="px-8 py-3 text-sm font-semibold text-slate-600 hover:text-slate-900 bg-slate-200/60 hover:bg-slate-300/60 rounded-full transition-colors">Cancel</a>
+                <button type="submit" form="timeline-form" class="bg-gradient-to-r from-red-600 to-green-600 text-white px-8 py-3 rounded-full text-sm font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2">
                     <i data-lucide="save" class="w-4 h-4"></i>
                     Save Event
                 </button>
             </div>
         </footer>
     </main>
-    <script> lucide.createIcons(); </script>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        lucide.createIcons();
+        AOS.init({ duration: 600, once: true, offset: 50 });
+    </script>
 </body>
 </html>

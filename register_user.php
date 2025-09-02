@@ -91,33 +91,87 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Register - Digital Liberation War Museum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'] 
+                    },
+                    colors: {
+                        'liberation': {
+                            'red': '#dc143c',
+                            'green': '#006a4e',
+                            'gold': '#ffd700'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .form-bg {
+            background-image: linear-gradient(to bottom, rgba(0, 106, 78, 0.8), rgba(220, 20, 60, 0.8)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Martyred_Intellectuals_Memorial.jpg/1280px-Martyred_Intellectuals_Memorial.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
-<div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
-    <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Create Your Museum Account</h2>
+<body class="flex items-center justify-center min-h-screen form-bg font-sans py-12">
+<div class="bg-white/90 backdrop-blur-lg p-8 sm:p-10 rounded-3xl shadow-2xl w-full max-w-md border border-white/20">
+    
+    <div class="text-center mb-8">
+        <a href="index.php">
+            <img src="images/logo.png" alt="Museum Logo" class="w-20 h-20 mx-auto rounded-full border-4 border-white shadow-lg">
+        </a>
+        <h2 class="text-3xl font-bold font-serif text-center mt-4 text-gray-900">Create Your Museum Account</h2>
+        <p class="text-slate-600">Join us to explore the history of 1971.</p>
+    </div>
 
     <?php if ($errorMsg): ?>
-        <div class="mb-4 p-3 bg-red-100 text-red-700 rounded"><?php echo htmlspecialchars($errorMsg); ?></div>
+        <div class="mb-4 p-4 bg-red-100 text-red-800 border-l-4 border-liberation-red rounded-r-lg" role="alert">
+            <p class="font-semibold">Registration Failed</p>
+            <p><?php echo htmlspecialchars($errorMsg); ?></p>
+        </div>
     <?php endif; ?>
 
     <form action="register_user.php" method="POST" enctype="multipart/form-data" class="space-y-5">
         <div>
-            <label for="fullName" class="block font-medium text-gray-700 mb-1">Full Name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required class="w-full px-4 py-2 border rounded-md">
+            <label for="fullName" class="block font-medium text-gray-700 mb-1.5">Full Name</label>
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <i data-lucide="user" class="w-5 h-5 text-gray-400"></i>
+                </span>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg shadow-sm bg-gray-50 focus:ring-red-500/30 focus:border-red-500 transition">
+            </div>
         </div>
         <div>
-            <label for="email" class="block font-medium text-gray-700 mb-1">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required class="w-full px-4 py-2 border rounded-md">
+            <label for="email" class="block font-medium text-gray-700 mb-1.5">Email Address</label>
+            <div class="relative">
+                 <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <i data-lucide="at-sign" class="w-5 h-5 text-gray-400"></i>
+                </span>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg shadow-sm bg-gray-50 focus:ring-red-500/30 focus:border-red-500 transition">
+            </div>
         </div>
         <div>
-            <label for="password" class="block font-medium text-gray-700 mb-1">Password</label>
-            <input type="password" id="password" name="password" placeholder="••••••••" required class="w-full px-4 py-2 border rounded-md">
+            <label for="password" class="block font-medium text-gray-700 mb-1.5">Password</label>
+            <div class="relative">
+                 <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <i data-lucide="lock" class="w-5 h-5 text-gray-400"></i>
+                </span>
+                <input type="password" id="password" name="password" placeholder="••••••••" required class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg shadow-sm bg-gray-50 focus:ring-red-500/30 focus:border-red-500 transition">
+            </div>
         </div>
         
         <div>
-            <label for="userRole" class="block font-medium text-gray-700 mb-1">Register As</label>
-            <select id="userRole" name="userRole" required class="w-full px-4 py-2 border rounded-md bg-white">
+            <label for="userRole" class="block font-medium text-gray-700 mb-1.5">Register As</label>
+            <select id="userRole" name="userRole" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm bg-gray-50 focus:ring-red-500/30 focus:border-red-500 transition">
                 <option value="" disabled selected>-- Select a Role --</option>
                 <option value="visitor">Visitor</option>
                 <option value="manager">Manager</option>
@@ -126,14 +180,17 @@ $conn->close();
         </div>
         
         <div>
-            <label for="profilePhoto" class="block font-medium text-gray-700 mb-1">Profile Photo (Optional)</label>
-            <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+            <label for="profilePhoto" class="block font-medium text-gray-700 mb-1.5">Profile Photo (Optional)</label>
+            <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" class="block w-full text-sm text-slate-700 border border-slate-300 rounded-lg cursor-pointer bg-slate-50 focus:outline-none file:bg-slate-200 file:text-slate-700 file:px-4 file:py-2 file:mr-4 file:border-0 hover:file:bg-slate-300">
         </div>
-        <button type="submit" class="w-full py-2 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 transition">Register</button>
+        <button type="submit" class="w-full py-3 bg-gradient-to-r from-liberation-red to-liberation-green text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">Register</button>
     </form>
-    <p class="text-sm text-gray-500 mt-6 text-center">
-        Already have an account? <a href="login.php" class="text-indigo-600 hover:underline">Login here</a>
+    <p class="text-sm text-gray-600 mt-6 text-center">
+        Already have an account? <a href="login.php" class="font-semibold text-liberation-green hover:underline">Login here</a>
     </p>
 </div>
+<script>
+    lucide.createIcons();
+</script>
 </body>
 </html>

@@ -22,19 +22,19 @@ $archiveCategories = [
     ['icon' => 'fa-heart', 'title' => 'Personal Effects', 'description' => 'Martyrs\' Belongings', 'color_bg' => 'bg-red-50', 'color_hover' => 'hover:bg-red-100', 'color_text' => 'text-red-600', 'aos_delay' => '300'],
 ];
 
-// Virtual Tour Items
+// Virtual Tour Items (using local images for reliability)
 $virtualTourItems = [
-    ['image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Liberation_War_Museum_Inside.JPG/800px-Liberation_War_Museum_Inside.JPG', 'title' => 'Gallery of Historic Photos', 'aos_delay' => '0'],
-    ['image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Liberation_War_Museum_Dhaka_2.jpg/800px-Liberation_War_Museum_Dhaka_2.jpg', 'title' => 'Interactive Storytelling', 'aos_delay' => '100'],
-    ['image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Artifact_in_liberation_war_museum%2C_Agargaon_61.jpg/800px-Artifact_in_liberation_war_museum%2C_Agargaon_61.jpg', 'title' => 'Mukti Bahini Weapons', 'aos_delay' => '200'],
+    ['image' => $baseURL . 'uploads/artifacts/1756579360_download (3).jpeg', 'title' => 'Gallery of Historic Photos', 'aos_delay' => '0'],
+    ['image' => $baseURL . 'uploads/artifacts/1756724716_WhatsApp Image 2025-09-01 at 16.50.11_7a72ed69.jpg', 'title' => 'Interactive Storytelling', 'aos_delay' => '100'],
+    ['image' => $baseURL . 'uploads/artifacts/1756725024_images (1).jpeg', 'title' => 'Mukti Bahini Weapons', 'aos_delay' => '200'],
 ];
 
-// Collection Items
+// Collection Items (using local images for reliability)
 $collectionItems = [
-    ['image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Liberation_War_Museum_Book.JPG/800px-Liberation_War_Museum_Book.JPG', 'title' => 'Freedom Weapons', 'description' => 'Weapons used by Mukti Bahini', 'color' => 'text-red-600', 'aos_delay' => '0'],
-    ['image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Liberation_War_Museum_Book.JPG/800px-Liberation_War_Museum_Book.JPG', 'title' => 'Historic Paintings', 'description' => 'Visual stories of 1971', 'color' => 'text-green-600', 'aos_delay' => '100'],
-    ['image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Liberation_War_Museum_Book.JPG/800px-Liberation_War_Museum_Book.JPG', 'title' => 'Documents & Manuscripts', 'description' => 'Rare papers and publications', 'color' => 'text-yellow-600', 'aos_delay' => '200'],
-    ['image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Liberation_War_Museum_Medal.JPG/800px-Liberation_War_Museum_Medal.JPG', 'title' => 'Martyrs’ Medals', 'description' => 'Honoring our heroes', 'color' => 'text-red-600', 'aos_delay' => '300'],
+    ['image' => $baseURL . 'uploads/artifacts/1756579360_download (3).jpeg', 'title' => 'Freedom Weapons', 'description' => 'Weapons used by Mukti Bahini', 'color' => 'text-red-600', 'aos_delay' => '0'],
+    ['image' => $baseURL . 'uploads/artifacts/1756724716_WhatsApp Image 2025-09-01 at 16.50.11_7a72ed69.jpg', 'title' => 'Historic Paintings', 'description' => 'Visual stories of 1971', 'color' => 'text-green-600', 'aos_delay' => '100'],
+    ['image' => $baseURL . 'uploads/artifacts/1756725024_images (1).jpeg', 'title' => 'Documents & Manuscripts', 'description' => 'Rare papers and publications', 'color' => 'text-yellow-600', 'aos_delay' => '200'],
+    ['image' => $baseURL . 'uploads/artifacts/1756579360_download (3).jpeg', 'title' => 'Martyrs’ Medals', 'description' => 'Honoring our heroes', 'color' => 'text-red-600', 'aos_delay' => '300'],
 ];
 ?>
 <!DOCTYPE html>
